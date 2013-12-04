@@ -6,9 +6,9 @@ A buildbot based regression tester for Zeromq
 
 This repository contains the buildbot setup that I use for regression testing the stack of ZMQ projects I use. Upon a commit to any of the monitored Github repositories (libsodium, libzmq, czmq, pyzmq, pyczmq) the buildbot will trigger a new code update, autogen, configure, build, test and install.
 
-<center>
-<img src="https://github.com/claws/zeromq-buildbot/blob/master/images/Zeromq-Buildbot.png" alt="Example Buildbot Display">
-</center>
+
+![Example](../blob/master/images/Zeromq-Buildbot.png?raw=true)
+
 
 ## Instructions
 
