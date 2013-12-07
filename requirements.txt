@@ -1,0 +1,2 @@
+buildbot
+buildbot-slave

@@ -1,0 +1,32 @@
+# zeromq-buildbot
+#
+# After modifying this file check it using: http://lint.travis-ci.org/
+#
+
+language: python
+
+python:
+  - "2.6"
+  - "2.7"
+  - "3.2"
+  - "3.3"
+  - "pypy"
+
+before_install: 
+  - pip install --use-mirrors -r requirements.txt
+
+
+install:
+  - python setup.py install
+
+# The procudure simply performs some of the setup and tests the 
+# configuration setup.
+script:
+  - mkdir buildbot
+  - cd buildbot
+  - buildbot create-master master
+  - rm -f master/master.cfg.sample
+  - cp -R zeromq-buildbot/config master/.
+  - cp zeromq-buildbot/master.cfg master/.
+  - cd master
+  - buildbot checkconfig master.cfg
