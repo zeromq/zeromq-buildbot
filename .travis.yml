@@ -22,7 +22,7 @@ script:
   - cd buildbot
   - buildbot create-master master
   - rm -f master/master.cfg.sample
-  - cp -R zeromq-buildbot/config master/.
-  - cp zeromq-buildbot/master.cfg master/.
+  - cp -R ../config master/.
+  - cp ../master.cfg master/.
   - cd master
   - buildbot checkconfig master.cfg
