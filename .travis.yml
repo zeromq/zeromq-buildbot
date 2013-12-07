@@ -15,10 +15,6 @@ python:
 before_install: 
   - pip install --use-mirrors -r requirements.txt
 
-
-install:
-  - python setup.py install
-
 # The procudure simply performs some of the setup and tests the 
 # configuration setup.
 script:
