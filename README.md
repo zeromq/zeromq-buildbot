@@ -2,7 +2,7 @@
 
 A buildbot based regression tester for Zeromq
 
-[![Build Status](https://travis-ci.org/claws/zeromq-buildbot.png?branch=add_travis_ci_check)](https://travis-ci.org/claws/zeromq-buildbot)
+[![Build Status](https://travis-ci.org/zeromq/zeromq-buildbot.png?branch=master)](https://travis-ci.org/zeromq/zeromq-buildbot)
 
 ## Overview
 
