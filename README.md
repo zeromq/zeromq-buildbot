@@ -2,6 +2,8 @@
 
 A buildbot based regression tester for Zeromq
 
+[![Build Status](https://travis-ci.org/claws/zeromq-buildbot.png?branch=add_travis_ci_check)](https://travis-ci.org/claws/zeromq-buildbot)
+
 ## Overview
 
 This repository contains a buildbot configuration that can be used for regression testing a collection of ZMQ projects. Upon a commit to any of the monitored Github repositories (libsodium, libzmq, czmq, pyzmq, pyczmq) the buildbot will trigger a new code update, autogen, configure, build, test and install.

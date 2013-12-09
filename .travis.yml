@@ -1,0 +1,28 @@
+# zeromq-buildbot
+#
+# After modifying this file check it using: http://lint.travis-ci.org/
+#
+
+language: python
+
+python:
+  - "2.6"
+  - "2.7"
+#  - "3.2" # buildbot does not currently support Python 3
+#  - "3.3" # buildbot does not currently support Python 3
+#  - "pypy" # issues with travis halting during buildbot setup
+
+before_install: 
+  - pip install --use-mirrors -r requirements.txt
+
+# The procudure simply performs some of the setup and tests the 
+# configuration setup.
+script:
+  - mkdir buildbot
+  - cd buildbot
+  - buildbot create-master master
+  - rm -f master/master.cfg.sample
+  - cp -R ../config master/.
+  - cp ../master.cfg master/.
+  - cd master
+  - buildbot checkconfig master.cfg
