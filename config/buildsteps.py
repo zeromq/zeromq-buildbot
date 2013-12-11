@@ -108,16 +108,16 @@ def get_buildsteps(codebases):
 
     f.addStep(ShellCommand(env=env, workdir=libzmq_dir,
         description=["libzmq", "configure"],
-        command=["./configure", properties.Interpolate('--prefix=%(prop:workdir)s/build/install')]))
+        command=["./configure", "--with-pgm", properties.Interpolate('--prefix=%(prop:workdir)s/build/install')]))
 
     # In some environments (potentially just virtuals) the libzmq tests
     # sometimes interfere with each other when the Make -j flag is greater
     # than 1. Hence the general approach taken in these build steps which
     # split the build and test instead of simply calling 'make -jX check'
-    f.addStep(ShellCommand(env=env, workdir=libsodium_dir,
+    f.addStep(ShellCommand(env=env, workdir=libzmq_dir,
         description=["libzmq", "build"], command=makeCommand))
 
-    f.addStep(ShellCommand(env=env, workdir=libsodium_dir,
+    f.addStep(ShellCommand(env=env, workdir=libzmq_dir,
         description=["libzmq", "test"], command=["make", "check"]))
 
     f.addStep(ShellCommand(env=env, workdir=libzmq_dir,
@@ -139,10 +139,10 @@ def get_buildsteps(codebases):
         description=["czmq", "configure"],
         command=["./configure", properties.Interpolate('--prefix=%(prop:workdir)s/build/install')]))
 
-    f.addStep(ShellCommand(env=env, workdir=libsodium_dir,
+    f.addStep(ShellCommand(env=env, workdir=czmq_dir,
         description=["czmq", "build"], command=makeCommand))
 
-    f.addStep(ShellCommand(env=env, workdir=libsodium_dir,
+    f.addStep(ShellCommand(env=env, workdir=czmq_dir,
         description=["czmq", "test"], command=makeCheckCommand))
 
     f.addStep(ShellCommand(env=env, workdir=czmq_dir,
