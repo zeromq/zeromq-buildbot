@@ -77,6 +77,8 @@ def get_buildsteps(codebases):
                          workdir=libsodium_dir)
     f.addStep(libsodium_repo)
 
+    f.addStep(ShellCommand(env=env, workdir=libsodium_dir,
+        description=["libsodium", "clean"], command=["git", "clean", "-d", "-x", "-f"]))
 
     f.addStep(ShellCommand(env=env, workdir=libsodium_dir,
         description=["libsodium", "autogen"], command=["./autogen.sh"]))
@@ -102,6 +104,9 @@ def get_buildsteps(codebases):
                       codebase='libzmq',
                       workdir=libzmq_dir)
     f.addStep(libzmq_repo)
+
+    f.addStep(ShellCommand(env=env, workdir=libzmq_dir,
+        description=["libzmq", "clean"], command=["git", "clean", "-d", "-x", "-f"]))
 
     f.addStep(ShellCommand(env=env, workdir=libzmq_dir,
         description=["libzmq", "autogen"], command=["./autogen.sh"]))
@@ -133,6 +138,9 @@ def get_buildsteps(codebases):
     f.addStep(libczmq_repo)
 
     f.addStep(ShellCommand(env=env, workdir=czmq_dir,
+        description=["czmq", "clean"], command=["git", "clean", "-d", "-x", "-f"]))
+
+    f.addStep(ShellCommand(env=env, workdir=czmq_dir,
         description=["czmq", "autogen"], command=["./autogen.sh"]))
 
     f.addStep(ShellCommand(env=env, workdir=czmq_dir,
@@ -158,6 +166,9 @@ def get_buildsteps(codebases):
     f.addStep(pyzmq_repo)
 
     f.addStep(ShellCommand(env=env, workdir=pyzmq_dir,
+        description=["pyzmq", "clean"], command=["git", "clean", "-d", "-x", "-f"]))
+
+    f.addStep(ShellCommand(env=env, workdir=pyzmq_dir,
         description=["pyzmq", "configure"],
         command=["python", "setup.py", "configure",
                  properties.Interpolate('--zmq=%(prop:workdir)s/build/install')]))
@@ -179,6 +190,9 @@ def get_buildsteps(codebases):
                       codebase='pyczmq',
                       workdir=pyczmq_dir)
     f.addStep(pyczmq_repo)
+
+    f.addStep(ShellCommand(env=env, workdir=pyczmq_dir,
+        description=["pyczmq", "clean"], command=["git", "clean", "-d", "-x", "-f"]))
 
     f.addStep(ShellCommand(env=env, workdir=pyczmq_dir,
         description=["pyczmq", "test"], command=["nosetests"]))
