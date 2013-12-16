@@ -74,11 +74,10 @@ def get_buildsteps(codebases):
 
     libsodium_repo = Git(repourl=codebases['libsodium']['repository'],
                          codebase='libsodium',
-                         workdir=libsodium_dir)
+                         workdir=libsodium_dir,
+                         mode='full',
+                         method='fresh')
     f.addStep(libsodium_repo)
-
-    f.addStep(ShellCommand(env=env, workdir=libsodium_dir,
-        description=["libsodium", "clean"], command=["git", "clean", "-d", "-x", "-f"]))
 
     f.addStep(ShellCommand(env=env, workdir=libsodium_dir,
         description=["libsodium", "autogen"], command=["./autogen.sh"]))
@@ -102,11 +101,10 @@ def get_buildsteps(codebases):
     #
     libzmq_repo = Git(repourl=codebases['libzmq']['repository'],
                       codebase='libzmq',
-                      workdir=libzmq_dir)
+                      workdir=libzmq_dir,
+                      mode='full',
+                      method='fresh')
     f.addStep(libzmq_repo)
-
-    f.addStep(ShellCommand(env=env, workdir=libzmq_dir,
-        description=["libzmq", "clean"], command=["git", "clean", "-d", "-x", "-f"]))
 
     f.addStep(ShellCommand(env=env, workdir=libzmq_dir,
         description=["libzmq", "autogen"], command=["./autogen.sh"]))
@@ -134,11 +132,10 @@ def get_buildsteps(codebases):
     #
     libczmq_repo = Git(repourl=codebases['czmq']['repository'],
                        codebase='czmq',
-                       workdir=czmq_dir)
+                       workdir=czmq_dir,
+                       mode='full',
+                       method='fresh')
     f.addStep(libczmq_repo)
-
-    f.addStep(ShellCommand(env=env, workdir=czmq_dir,
-        description=["czmq", "clean"], command=["git", "clean", "-d", "-x", "-f"]))
 
     f.addStep(ShellCommand(env=env, workdir=czmq_dir,
         description=["czmq", "autogen"], command=["./autogen.sh"]))
@@ -162,11 +159,10 @@ def get_buildsteps(codebases):
     #
     pyzmq_repo = Git(repourl=codebases['pyzmq']['repository'],
                      codebase='pyzmq',
-                     workdir=pyzmq_dir)
+                     workdir=pyzmq_dir,
+                     mode='full',
+                     method='fresh')
     f.addStep(pyzmq_repo)
-
-    f.addStep(ShellCommand(env=env, workdir=pyzmq_dir,
-        description=["pyzmq", "clean"], command=["git", "clean", "-d", "-x", "-f"]))
 
     f.addStep(ShellCommand(env=env, workdir=pyzmq_dir,
         description=["pyzmq", "configure"],
@@ -188,11 +184,10 @@ def get_buildsteps(codebases):
     #
     pyczmq_repo = Git(repourl=codebases['pyczmq']['repository'],
                       codebase='pyczmq',
-                      workdir=pyczmq_dir)
+                      workdir=pyczmq_dir,
+                      mode='full',
+                      method='fresh')
     f.addStep(pyczmq_repo)
-
-    f.addStep(ShellCommand(env=env, workdir=pyczmq_dir,
-        description=["pyczmq", "clean"], command=["git", "clean", "-d", "-x", "-f"]))
 
     f.addStep(ShellCommand(env=env, workdir=pyczmq_dir,
         description=["pyczmq", "test"], command=["nosetests"]))
