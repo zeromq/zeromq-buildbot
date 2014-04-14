@@ -80,7 +80,8 @@ def get_buildsteps(codebases):
                          codebase='libsodium',
                          workdir=libsodium_dir,
                          mode='full',
-                         method='fresh')
+                         shallow=True,
+                         method='clobber')
     f.addStep(libsodium_repo)
 
     f.addStep(ShellCommand(
@@ -122,7 +123,8 @@ def get_buildsteps(codebases):
                       codebase='libzmq',
                       workdir=libzmq_dir,
                       mode='full',
-                      method='fresh')
+                      shallow=True,
+                      method='clobber')
     f.addStep(libzmq_repo)
 
     f.addStep(ShellCommand(
@@ -140,7 +142,7 @@ def get_buildsteps(codebases):
 
     # In some environments (potentially just virtuals) the libzmq tests
     # sometimes interfere with each other when the Make -j flag is greater
-    # than 1. Hence the general approach taken in these build steps which
+    # than 1. Therefore the general approach taken in these build steps is to
     # split the build and test instead of simply calling 'make -jX check'
     f.addStep(ShellCommand(
         env=env,
@@ -168,7 +170,8 @@ def get_buildsteps(codebases):
                        codebase='czmq',
                        workdir=czmq_dir,
                        mode='full',
-                       method='fresh')
+                       shallow=True,
+                       method='clobber')
     f.addStep(libczmq_repo)
 
     f.addStep(ShellCommand(
@@ -210,7 +213,8 @@ def get_buildsteps(codebases):
                      codebase='pyzmq',
                      workdir=pyzmq_dir,
                      mode='full',
-                     method='fresh')
+                     shallow=True,
+                     method='clobber')
     f.addStep(pyzmq_repo)
 
     f.addStep(ShellCommand(
@@ -239,7 +243,8 @@ def get_buildsteps(codebases):
                       codebase='pyczmq',
                       workdir=pyczmq_dir,
                       mode='full',
-                      method='fresh')
+                      shallow=True,
+                      method='clobber')
     f.addStep(pyczmq_repo)
 
     f.addStep(ShellCommand(
