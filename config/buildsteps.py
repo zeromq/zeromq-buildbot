@@ -53,6 +53,7 @@ def get_buildsteps(codebases):
             '%(prop:workdir)s/build/install/lib/python2.7/site-packages'),
         "CC": 'gcc',
         "CFLAGS": Interpolate('-I%(prop:workdir)s/build/install/include'),
+        "CPPFLAGS": Interpolate('-I%(prop:workdir)s/build/install/include'),
         "LDFLAGS": Interpolate('-L%(prop:workdir)s/build/install/lib')
         }
 
